@@ -1,0 +1,20 @@
+body {
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+#main {
+    max-width: 900px;
+    text-align:center;
+    margin: auto;
+}
+
+#content {
+    height: 100%;
+    min-height: 500;
+    min-height: 300px;
+}
+
+#login-form input {
+    margin-bottom: 0;
+}
