@@ -31,8 +31,15 @@ def info(req, msg):
     return render_to_response('homepage/info.html', {'msg':msg}, context_instance=RequestContext(req))
         
 def signup(req):
-    form = RegisterForm() 
     if req.method == 'POST':
-        return HttpResponseRedirect('/info/'+_(u'注册成功，请登录。'))
+        form = RegisterForm(req.POST)
+        if form.is_valid():
+            '''保存用户'''
+            pass
+            return HttpResponseRedirect('/info/'+_(u'注册成功，请登录。'))
+        else:
+            '''用户数据有错误'''
+            return render_to_response('homepage/signup.html', {'form': form}, context_instance=RequestContext(req))
     else:
+        form = RegisterForm() 
         return render_to_response('homepage/signup.html', {'form': form}, context_instance=RequestContext(req))
