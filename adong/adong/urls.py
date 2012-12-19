@@ -18,11 +18,13 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     (r'^$', 'homepage.views.index'),
-    (r'^home/help/', 'homepage.views.help'),
+    (r'^home/help/', 'django.views.generic.simple.direct_to_template', {'template': 'help.html'}),
     (r'^accounts/login', login, {'template_name':'homepage/login.html'}),
     (r'^accounts/logout', logout, {'template_name':'homepage/logout.html'}),
     (r'^accounts/profile', 'homepage.views.profile'),
-    (r'^accounts/changepwd', 'homepage.views.changepwd'),
+    (r'^accounts/changepwd', 'django.contrib.auth.views.password_change', {'template_name':'homepage/changepwd.html', 'post_change_redirect':'/'}),
+    (r'^info/(?P<msg>.+)/$', 'homepage.views.info'),
+    (r'^signup/$', 'homepage.views.signup')
 )
 
 urlpatterns += patterns('blog.views',
