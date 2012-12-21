@@ -4,22 +4,31 @@
 {% block content %}
 <form action='' method="post" class="form-horizontal">
     {% csrf_token %}
-    <div class="control-group">
-        <label class="control-label" for="inputOldPass">{% trans "原始密码" %}</label>
+    <div class="control-group {% if form.old_password.errors %} error {% endif %}">
+        <label class="control-label" for="old_password">{% trans "原始密码" %}</label>
         <div class="controls">
-            <input type="password" id="inputOldPass" name="oldPass" autocomplete="off">
+            <input type="password" id="old_password" name="old_password" autocomplete="off">
+            {% if form.old_password.errors %}
+            <span class="help-inline">{{ form.old_password.errors.0 }}</span>
+            {% endif %}
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="inputNewPass">{% trans "新密码" %}</label>
+    <div class="control-group {% if form.new_password1.errors %} error {% endif %}">
+        <label class="control-label" for="new_password1">{% trans "新密码" %}</label>
         <div class="controls">
-            <input type="password" id="inputNewPass" name="newPass">
+            <input type="password" id="new_password1" name="new_password1">
+            {% if form.new_password1.errors %}
+            <span class="help-inline">{{ form.new_password1.errors.0 }}</span>
+            {% endif  %}
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="inputNewPass2">{% trans "确认密码" %}</label>
+    <div class="control-group {% if form.new_password2.errors %} error {% endif %}">
+        <label class="control-label" for="new_password2">{% trans "确认密码" %}</label>
         <div class="controls">
-            <input type="password" id="inputNewPass2" name="newPass2" >
+            <input type="password" id="new_password2" name="new_password2" >
+            {% if form.new_password2.errors %}
+            <span class="help-inline">{{ form.new_password2.errors.0 }}</span>
+            {% endif %}
         </div>
     </div>
     <div class="form-actions">
