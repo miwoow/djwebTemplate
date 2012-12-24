@@ -13,6 +13,15 @@
             {% endif %}
         </div>
     </div>
+    <div class="control-group {% if form.first_name.errors %} error {% endif %}">
+        <label class="control-label" for="">{{ form.first_name.label}}</label>
+        <div class="controls">
+            {{ form.first_name }}
+            {% if form.first_name.errors %}
+            <span class="help-inline">{{ form.first_name.errors.0 }}</span>
+            {% endif %}
+        </div>
+    </div>
     <div class="control-group {% if form.password.errors %} error {% endif %}">
         <label class="control-label" for="">{{ form.password.label}}</label>
         <div class="controls">
@@ -31,6 +40,7 @@
             {% endif %}
         </div>
     </div>
+
     <div class="control-group {% if form.email.errors %} error {% endif %}">
         <label class="control-label" for="">{{ form.email.label}}</label>
         <div class="controls">
